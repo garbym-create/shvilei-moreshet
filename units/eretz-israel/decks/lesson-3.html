@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>שיעור 3 · הבית הוא כאן ועכשיו</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F1EA; --panel:#FFFFFF; --ink:#1E2430; --ink-soft:#4A5468;
+  --a:#1F5C8B; --a-soft:#E3EEF6; --b:#B05E1D; --b-soft:#FAEBDD;
+  --accent:#2E7D5B; --accent-soft:#E2F0EA;
+  --line:#D8D2C6; --shadow:0 2px 14px rgba(30,36,48,.10);
+  --r:18px; --fs:1;
+}
+body.hc{ --bg:#000; --panel:#000; --ink:#fff; --ink-soft:#f2f2f2;
+  --a:#7FD4FF; --a-soft:#10222c; --b:#FFC46B; --b-soft:#2b1c08;
+  --accent:#8CF0BE; --accent-soft:#07231a; --line:#fff; --shadow:none;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink); direction:rtl;
+  font-family:"Assistant","Rubik","Segoe UI","Arial Hebrew",Arial,sans-serif;
+  font-size:calc(19px * var(--fs)); line-height:1.85; letter-spacing:.2px;
+  -webkit-text-size-adjust:100%;
+}
+body.dys{ font-family:"Tahoma","Verdana",Arial,sans-serif; letter-spacing:.9px; word-spacing:4px; line-height:2.1;}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 140px}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:2px solid var(--line);
+  padding:8px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.bar .ttl{font-weight:800;font-size:.85em;margin-inline-end:auto;line-height:1.3}
+.bar .ttl small{display:block;font-weight:600;color:var(--ink-soft);font-size:.85em}
+.tool{min-width:48px;min-height:48px;border:2px solid var(--line);background:var(--panel);
+  color:var(--ink);border-radius:14px;font:inherit;font-size:.8em;font-weight:700;cursor:pointer;
+  padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.tool:hover{border-color:var(--a)}
+.tool[aria-pressed="true"]{background:var(--a);color:#fff;border-color:var(--a)}
+.tool:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:4px solid #F2B705;outline-offset:3px}
+
+/* ---------- progress ---------- */
+.prog{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 6px}
+.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .35s ease}
+.progtxt{font-size:.78em;color:var(--ink-soft);font-weight:700;margin-bottom:10px}
+
+/* ---------- slide ---------- */
+.slide{background:var(--panel);border:2px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:26px 22px;margin-bottom:18px;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide{animation:none}}
+.slide[hidden]{display:none}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);
+  font-weight:800;font-size:.78em;padding:7px 14px;border-radius:99px;margin-bottom:14px}
+h1{font-size:1.85em;line-height:1.25;margin:.1em 0 .35em;font-weight:800}
+h2{font-size:1.35em;line-height:1.3;margin:.9em 0 .4em;font-weight:800}
+h3{font-size:1.05em;margin:.8em 0 .3em;font-weight:800;color:var(--ink-soft)}
+p{margin:.55em 0;max-width:62ch}
+.lead{font-size:1.12em;font-weight:600}
+ul,ol{margin:.5em 0;padding-inline-start:1.3em;max-width:62ch}
+li{margin:.45em 0}
+.big{font-size:1.5em;font-weight:800;line-height:1.4}
+
+/* cards */
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{border:2px solid var(--line);border-radius:14px;padding:16px;background:var(--panel)}
+.card.a{border-color:var(--a);background:var(--a-soft)}
+.card.b{border-color:var(--b);background:var(--b-soft)}
+.card .tag{font-weight:800;font-size:.8em;display:inline-block;padding:5px 12px;border-radius:99px;margin-bottom:8px}
+.card.a .tag{background:var(--a);color:#fff}
+.card.b .tag{background:var(--b);color:#fff}
+
+/* source text */
+.source{background:var(--accent-soft);border-inline-start:8px solid var(--accent);
+  border-radius:12px;padding:16px 18px;font-size:1.06em}
+.source .cite{display:block;margin-top:10px;font-size:.82em;font-weight:800;color:var(--ink-soft)}
+.source .chunk{display:block;margin:.45em 0}
+mark{background:#FFE9A8;color:inherit;padding:1px 4px;border-radius:5px;font-weight:700}
+body.hc mark{background:#FFC46B;color:#000}
+
+/* word bank / glossary */
+.glos{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.glos b{background:var(--panel);border:2px dashed var(--line);border-radius:99px;padding:6px 13px;font-size:.82em;font-weight:700}
+
+/* steps checklist */
+.steps{list-style:none;padding:0;margin:.6em 0}
+.steps li{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;
+  padding:13px 15px;margin:9px 0;cursor:pointer;background:var(--panel)}
+.steps li .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--a-soft);color:var(--a);
+  font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9em}
+.steps li.done{background:var(--accent-soft);border-color:var(--accent)}
+.steps li.done .n{background:var(--accent);color:#fff}
+.steps li.done .n::before{content:"✓"}
+.steps li.done .n span{display:none}
+
+/* timer */
+.timer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.timer output{font-size:1.6em;font-weight:800;font-variant-numeric:tabular-nums;min-width:100px}
+
+/* optional module */
+details.mod{border:2px dashed var(--b);border-radius:14px;padding:4px 16px;background:var(--b-soft);margin-top:14px}
+details.mod summary{font-weight:800;cursor:pointer;padding:12px 0;font-size:.95em;color:var(--b);min-height:48px;display:flex;align-items:center}
+details.mod[open] summary{border-bottom:2px dashed var(--b);margin-bottom:8px}
+
+.note{background:var(--a-soft);border-radius:12px;padding:12px 16px;font-size:.9em;margin-top:12px}
+.note b{color:var(--a)}
+
+/* ---------- bottom nav ---------- */
+.nav{position:fixed;inset-inline:0;bottom:0;z-index:60;background:var(--panel);
+  border-top:2px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  display:flex;gap:10px;align-items:center;box-shadow:0 -3px 16px rgba(0,0,0,.09)}
+.nav button{flex:1;min-height:56px;border-radius:16px;border:2px solid var(--a);background:var(--panel);
+  color:var(--a);font:inherit;font-weight:800;font-size:1em;cursor:pointer}
+.nav button.pri{background:var(--a);color:#fff}
+.nav button:disabled{opacity:.35;cursor:not-allowed}
+.nav .idx{font-weight:800;font-size:.85em;color:var(--ink-soft);min-width:64px;text-align:center}
+.credit{text-align:center;font-size:.8em;font-weight:700;color:var(--ink-soft);
+  border-top:2px dashed var(--line);margin-top:22px;padding-top:14px}
+.credit b{color:var(--accent)}
+.bar .ttl em{display:block;font-style:normal;font-weight:700;font-size:.78em;color:var(--accent)}
+.skip{position:absolute;inset-inline-start:-9999px}
+.skip:focus{position:static;display:block;padding:10px;font-weight:800}
+@media print{.bar,.nav,.prog,.progtxt{display:none}.slide{display:block!important;page-break-after:always;box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">דלג לתוכן</a>
+<header class="bar">
+  <div class="ttl">שיעור 3 · הבית הוא כאן ועכשיו<small>שבילי מורשת · ז'–ח' · ארץ ישראל: זיכרון, זהות ושייכות</small><em>ממעבדת הניסויים של מרי גרבי</em></div>
+  <a class="tool" href="../lesson-3.html" style="text-decoration:none">↩ לאתר</a>
+  <button class="tool" id="fsDn" title="הקטן טקסט" aria-label="הקטן טקסט">א−</button>
+  <button class="tool" id="fsUp" title="הגדל טקסט" aria-label="הגדל טקסט">א+</button>
+  <button class="tool" id="dys" aria-pressed="false" title="ריווח קריאה מוגבר">ריווח</button>
+  <button class="tool" id="hc" aria-pressed="false" title="ניגודיות גבוהה">ניגודיות</button>
+</header>
+<div class="wrap">
+  <div class="prog"><i></i></div>
+  <div class="progtxt" role="status" aria-live="polite"></div>
+  <main id="main">
+<section class="slide" data-label="פתיח" aria-label="פתיח"><div class="kicker">שיעור 3</div><h1>הבית הוא כאן ועכשיו</h1><p class='lead'>שיעור 3 מתוך 5 · מתמקדים בעמדה ב'</p><div class="grid two">
+<div class="card a"><span class="tag">עמדה א' · העבר</span>
+<p><b>הארץ היא הבית שלנו בגלל ההיסטוריה.</b></p>
+<p>אלפי שנים של זיכרון, תפילה, סיפורים ומורשת מחברים אותנו למקום הזה.</p></div>
+<div class="card b"><span class="tag">עמדה ב' · ההווה</span>
+<p><b>הארץ היא הבית שלנו בגלל החיים כאן.</b></p>
+<p>המשפחה, החברים, השכונה, השפה והאחריות שלנו זה לזה — הם שהופכים אותה לבית.</p></div>
+</div></section>
+<section class="slide" data-label="מה נעשה היום" aria-label="מה נעשה היום"><div class="kicker">מפת השיעור</div><h1>מה נעשה היום?</h1><p class="lead">כל שיעור בנוי אותו דבר. זה הסדר:</p><ul class="steps"><li><span class="n"><span>1</span></span><span>פתיחה — עוגן אישי (10 דק')</span></li><li><span class="n"><span>2</span></span><span>גוף השיעור — מקור + משימה בזוגות (25 דק')</span></li><li><span class="n"><span>3</span></span><span>סיכום — כתיבה קצרה משלי (10 דק')</span></li></ul><div class="note"><b>טיפ:</b> בכל שקופית יש משימה אחת בלבד. אפשר להגדיל טקסט, להפעיל ריווח קריאה או להקשיב להקראה בכפתורים למעלה.</div></section>
+<section class="slide" data-label="פתיחה" aria-label="פתיחה"><div class="kicker">שלב 1 · פתיחה (10 דק')</div><h1>שלושה דברים</h1><p class="big">3 דברים שמרגישים לי "בית" בארץ.</p>
+<p>לא רעיונות גדולים — <b>דברים ממש קטנים</b>: נוף, שפה, טעם, חבר, שכונה, מוזיקה, ריח, מקום.</p>
+<div class="grid two">
+<div class="card"><b>🌄 נוף</b></div><div class="card"><b>🗣️ שפה וסלנג</b></div>
+<div class="card"><b>🍽️ טעמים</b></div><div class="card"><b>🧑‍🤝‍🧑 אנשים</b></div>
+</div><div class="timer" data-timer="4"><strong>סבב מליאה:</strong><output aria-live="off">00:00</output><button class="tool tstart">▶ התחל</button><button class="tool treset">↺ אפס</button></div></section>
+<section class="slide" data-label="שיר · ארץ נהדרת" aria-label="שיר · ארץ נהדרת"><div class="kicker">שלב 2 · גוף השיעור (25 דק')</div><h1>הבית שנמצא בחושים</h1><p class="lead">קוראים יחד את <b>"שלום לך ארץ נהדרת"</b> (מילים: אילן גולדהירש).</p>
+<div class="source"><span class="chunk">בשיר מופיעים <mark>"ריח של אדמה"</mark> ו<mark>"חברים שמסביבי"</mark>.</span>
+<span class="chunk">אלה לא עובדות היסטוריות — אלה <b>תחושות של כאן ועכשיו</b>.</span></div>
+<div class="note"><b>שאלה 1:</b> האם אלו נתונים היסטוריים או תחושות של הרגע הזה?</div></section>
+<section class="slide" data-label="שני סיפורי הווה" aria-label="שני סיפורי הווה"><div class="kicker">שלב 2 · מקורות</div><h1>שייכות שנמדדת במעשה</h1><div class="grid two">
+<div class="card b"><span class="tag">שמירת הטבע</span><p><b>עמוס עוז</b> כתב על היחס לנוף ולסביבה כאן — לא כאל נכס היסטורי, אלא כאל <b>בית שמתחזקים</b>.</p></div>
+<div class="card b"><span class="tag">"טנק בנייה"</span><p><b>תמיר היימן</b>, מלחמת לבנון השנייה: סיפור על אחריות הדדית ועל מה שאנשים עושים <b>אחד בשביל השני</b> ברגע אמת.</p></div>
+</div>
+<p class="lead">מה משותף לשני הסיפורים? בשניהם השייכות נמדדת ב<b>מעשה</b>, לא בזיכרון.</p></section>
+<section class="slide" data-label="עבודה בקבוצות" aria-label="עבודה בקבוצות"><div class="kicker">שלב 2 · משימה</div><h1>מפת הבית שלנו</h1><p class="lead">קבוצות של 3. כל קבוצה בונה "מפת בית" קטנה:</p><ul class="steps"><li><span class="n"><span>1</span></span><span>בוחרים <b>מקום אחד</b> אמיתי בסביבה שלנו שמרגיש בית.</span></li><li><span class="n"><span>2</span></span><span>כותבים <b>שתי סיבות</b> למה — בלי להזכיר היסטוריה.</span></li><li><span class="n"><span>3</span></span><span>כותבים <b>מעשה אחד</b> שאנחנו יכולים לעשות כדי לשמור עליו.</span></li></ul><div class="timer" data-timer="12"><strong>עבודה בקבוצות:</strong><output aria-live="off">00:00</output><button class="tool tstart">▶ התחל</button><button class="tool treset">↺ אפס</button></div><div class="note"><b>שאלה 2:</b> איך התחושה "כאן אני בבית" משפיעה על הרצון שלי להשקיע בחברה הישראלית?</div></section>
+<section class="slide" data-label="השוואה" aria-label="השוואה"><div class="kicker">שלב 2 · דיון</div><h1>איפה אני על הסקאלה?</h1><p class="lead"><b>שאלה 3:</b> איזו עמדה קרובה יותר ללבכם?</p><div class="grid two">
+<div class="card a"><span class="tag">עמדה א' · העבר</span>
+<p><b>הארץ היא הבית שלנו בגלל ההיסטוריה.</b></p>
+<p>אלפי שנים של זיכרון, תפילה, סיפורים ומורשת מחברים אותנו למקום הזה.</p></div>
+<div class="card b"><span class="tag">עמדה ב' · ההווה</span>
+<p><b>הארץ היא הבית שלנו בגלל החיים כאן.</b></p>
+<p>המשפחה, החברים, השכונה, השפה והאחריות שלנו זה לזה — הם שהופכים אותה לבית.</p></div>
+</div><p>סמנו את עצמכם על הסקאלה בדף העבודה — ואפשר גם באמצע. <b>אין תשובה נכונה.</b></p></section>
+<section class="slide" data-label="סיכום" aria-label="סיכום"><div class="kicker">שלב 3 · סיכום (10 דק')</div><h1>מכתב לעצמי</h1><p class="big">"המשמעות שלי כאן" — מכתב קצר לעצמי.</p>
+<div class="source"><span class="chunk">אני חי/ה כאן, ולכן יש לי אחריות ל… .</span>
+<span class="chunk">הדבר הקטן שאני יכול/ה לעשות השנה הוא… .</span>
+<span class="chunk">בעוד שנה אני רוצה לקרוא את הפתק הזה ולהרגיש… .</span></div><div class="timer" data-timer="7"><strong>כתיבה אישית:</strong><output aria-live="off">00:00</output><button class="tool tstart">▶ התחל</button><button class="tool treset">↺ אפס</button></div><div class="note"><b>חלופות:</b> הקלטה קולית, קומיקס בשלוש משבצות, או הכתבה לחבר/ה.<br>בשיעור הבא: <b>הדילמה הגדולה</b> — פרשת אוגנדה.</div></section>
+
+  </main>
+  <p class="credit">🧪 <b>ממעבדת הניסויים של מרי גרבי</b></p>
+</div>
+<nav class="nav" aria-label="ניווט בין שקופיות">
+  <button id="prev">→ הקודם</button>
+  <span class="idx" id="idx"></span>
+  <button id="next" class="pri">הבא ←</button>
+</nav>
+<script>
+const S=[...document.querySelectorAll('.slide')];let i=0;
+const bar=document.querySelector('.prog i'),ptxt=document.querySelector('.progtxt'),
+ idx=document.getElementById('idx'),pv=document.getElementById('prev'),nx=document.getElementById('next');
+function show(n){i=Math.max(0,Math.min(S.length-1,n));
+ S.forEach((s,k)=>{s.hidden=k!==i;});
+ bar.style.width=((i+1)/S.length*100)+'%';
+ ptxt.textContent='שקופית '+(i+1)+' מתוך '+S.length+' · '+(S[i].dataset.label||'');
+ idx.textContent=(i+1)+'/'+S.length; pv.disabled=i===0; nx.disabled=i===S.length-1;
+ window.scrollTo({top:0,behavior:'instant'});
+ S[i].setAttribute('tabindex','-1'); S[i].focus({preventScroll:true});
+ try{localStorage&&0}catch(e){}
+}
+pv.onclick=()=>show(i-1); nx.onclick=()=>show(i+1);
+document.addEventListener('keydown',e=>{
+ if(e.target.matches('input,textarea'))return;
+ if(e.key==='ArrowLeft'||e.key==='PageDown'||e.key===' ')show(i+1);
+ if(e.key==='ArrowRight'||e.key==='PageUp')show(i-1);
+});
+// swipe (touch) — לחיצה תמיד זמינה כחלופה
+let x0=null;
+document.addEventListener('touchstart',e=>{x0=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{if(x0===null)return;const d=e.changedTouches[0].clientX-x0;
+ if(Math.abs(d)>70){d<0?show(i-1):show(i+1)} x0=null},{passive:true});
+
+// tools
+let fs=1;
+function setFs(v){fs=Math.min(1.7,Math.max(.85,v));document.documentElement.style.setProperty('--fs',fs.toFixed(2));}
+document.getElementById('fsUp').onclick=()=>setFs(fs+.12);
+document.getElementById('fsDn').onclick=()=>setFs(fs-.12);
+const t=(id,cls)=>{const b=document.getElementById(id);b.onclick=()=>{const on=document.body.classList.toggle(cls);b.setAttribute('aria-pressed',on)}};
+t('hc','hc'); t('dys','dys');
+// checklists
+document.querySelectorAll('.steps li').forEach(li=>{
+ li.tabIndex=0;li.setAttribute('role','checkbox');li.setAttribute('aria-checked','false');
+ const tog=()=>{const on=li.classList.toggle('done');li.setAttribute('aria-checked',on)};
+ li.onclick=tog; li.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}};
+});
+// timers
+document.querySelectorAll('[data-timer]').forEach(box=>{
+ const out=box.querySelector('output'),btn=box.querySelector('.tstart'),rst=box.querySelector('.treset');
+ let total=+box.dataset.timer*60,left=total,h=null;
+ const paint=()=>out.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');
+ paint();
+ btn.onclick=()=>{if(h){clearInterval(h);h=null;btn.textContent='▶ המשך';return}
+  btn.textContent='⏸ עצור';h=setInterval(()=>{left--;paint();if(left<=0){clearInterval(h);h=null;btn.textContent='▶ התחל';out.textContent='נגמר הזמן';}},1000)};
+ rst.onclick=()=>{clearInterval(h);h=null;left=total;paint();btn.textContent='▶ התחל'};
+});
+show(0);
+</script>
+</body></html>

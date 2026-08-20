@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>שיעור 4 · הדילמה הגדולה (פרשת אוגנדה)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F1EA; --panel:#FFFFFF; --ink:#1E2430; --ink-soft:#4A5468;
+  --a:#1F5C8B; --a-soft:#E3EEF6; --b:#B05E1D; --b-soft:#FAEBDD;
+  --accent:#2E7D5B; --accent-soft:#E2F0EA;
+  --line:#D8D2C6; --shadow:0 2px 14px rgba(30,36,48,.10);
+  --r:18px; --fs:1;
+}
+body.hc{ --bg:#000; --panel:#000; --ink:#fff; --ink-soft:#f2f2f2;
+  --a:#7FD4FF; --a-soft:#10222c; --b:#FFC46B; --b-soft:#2b1c08;
+  --accent:#8CF0BE; --accent-soft:#07231a; --line:#fff; --shadow:none;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink); direction:rtl;
+  font-family:"Assistant","Rubik","Segoe UI","Arial Hebrew",Arial,sans-serif;
+  font-size:calc(19px * var(--fs)); line-height:1.85; letter-spacing:.2px;
+  -webkit-text-size-adjust:100%;
+}
+body.dys{ font-family:"Tahoma","Verdana",Arial,sans-serif; letter-spacing:.9px; word-spacing:4px; line-height:2.1;}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 140px}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:2px solid var(--line);
+  padding:8px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.bar .ttl{font-weight:800;font-size:.85em;margin-inline-end:auto;line-height:1.3}
+.bar .ttl small{display:block;font-weight:600;color:var(--ink-soft);font-size:.85em}
+.tool{min-width:48px;min-height:48px;border:2px solid var(--line);background:var(--panel);
+  color:var(--ink);border-radius:14px;font:inherit;font-size:.8em;font-weight:700;cursor:pointer;
+  padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.tool:hover{border-color:var(--a)}
+.tool[aria-pressed="true"]{background:var(--a);color:#fff;border-color:var(--a)}
+.tool:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible{outline:4px solid #F2B705;outline-offset:3px}
+
+/* ---------- progress ---------- */
+.prog{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 6px}
+.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .35s ease}
+.progtxt{font-size:.78em;color:var(--ink-soft);font-weight:700;margin-bottom:10px}
+
+/* ---------- slide ---------- */
+.slide{background:var(--panel);border:2px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:26px 22px;margin-bottom:18px;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide{animation:none}}
+.slide[hidden]{display:none}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);
+  font-weight:800;font-size:.78em;padding:7px 14px;border-radius:99px;margin-bottom:14px}
+h1{font-size:1.85em;line-height:1.25;margin:.1em 0 .35em;font-weight:800}
+h2{font-size:1.35em;line-height:1.3;margin:.9em 0 .4em;font-weight:800}
+h3{font-size:1.05em;margin:.8em 0 .3em;font-weight:800;color:var(--ink-soft)}
+p{margin:.55em 0;max-width:62ch}
+.lead{font-size:1.12em;font-weight:600}
+ul,ol{margin:.5em 0;padding-inline-start:1.3em;max-width:62ch}
+li{margin:.45em 0}
+.big{font-size:1.5em;font-weight:800;line-height:1.4}
+
+/* cards */
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{border:2px solid var(--line);border-radius:14px;padding:16px;background:var(--panel)}
+.card.a{border-color:var(--a);background:var(--a-soft)}
+.card.b{border-color:var(--b);background:var(--b-soft)}
+.card .tag{font-weight:800;font-size:.8em;display:inline-block;padding:5px 12px;border-radius:99px;margin-bottom:8px}
+.card.a .tag{background:var(--a);color:#fff}
+.card.b .tag{background:var(--b);color:#fff}
+
+/* source text */
+.source{background:var(--accent-soft);border-inline-start:8px solid var(--accent);
+  border-radius:12px;padding:16px 18px;font-size:1.06em}
+.source .cite{display:block;margin-top:10px;font-size:.82em;font-weight:800;color:var(--ink-soft)}
+.source .chunk{display:block;margin:.45em 0}
+mark{background:#FFE9A8;color:inherit;padding:1px 4px;border-radius:5px;font-weight:700}
+body.hc mark{background:#FFC46B;color:#000}
+
+/* word bank / glossary */
+.glos{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.glos b{background:var(--panel);border:2px dashed var(--line);border-radius:99px;padding:6px 13px;font-size:.82em;font-weight:700}
+
+/* steps checklist */
+.steps{list-style:none;padding:0;margin:.6em 0}
+.steps li{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;
+  padding:13px 15px;margin:9px 0;cursor:pointer;background:var(--panel)}
+.steps li .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--a-soft);color:var(--a);
+  font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9em}
+.steps li.done{background:var(--accent-soft);border-color:var(--accent)}
+.steps li.done .n{background:var(--accent);color:#fff}
+.steps li.done .n::before{content:"✓"}
+.steps li.done .n span{display:none}
+
+/* timer */
+.timer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.timer output{font-size:1.6em;font-weight:800;font-variant-numeric:tabular-nums;min-width:100px}
+
+/* optional module */
+details.mod{border:2px dashed var(--b);border-radius:14px;padding:4px 16px;background:var(--b-soft);margin-top:14px}
+details.mod summary{font-weight:800;cursor:pointer;padding:12px 0;font-size:.95em;color:var(--b);min-height:48px;display:flex;align-items:center}
+details.mod[open] summary{border-bottom:2px dashed var(--b);margin-bottom:8px}
+
+.note{background:var(--a-soft);border-radius:12px;padding:12px 16px;font-size:.9em;margin-top:12px}
+.note b{color:var(--a)}
+
+/* ---------- bottom nav ---------- */
+.nav{position:fixed;inset-inline:0;bottom:0;z-index:60;background:var(--panel);
+  border-top:2px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  display:flex;gap:10px;align-items:center;box-shadow:0 -3px 16px rgba(0,0,0,.09)}
+.nav button{flex:1;min-height:56px;border-radius:16px;border:2px solid var(--a);background:var(--panel);
+  color:var(--a);font:inherit;font-weight:800;font-size:1em;cursor:pointer}
+.nav button.pri{background:var(--a);color:#fff}
+.nav button:disabled{opacity:.35;cursor:not-allowed}
+.nav .idx{font-weight:800;font-size:.85em;color:var(--ink-soft);min-width:64px;text-align:center}
+.credit{text-align:center;font-size:.8em;font-weight:700;color:var(--ink-soft);
+  border-top:2px dashed var(--line);margin-top:22px;padding-top:14px}
+.credit b{color:var(--accent)}
+.bar .ttl em{display:block;font-style:normal;font-weight:700;font-size:.78em;color:var(--accent)}
+.skip{position:absolute;inset-inline-start:-9999px}
+.skip:focus{position:static;display:block;padding:10px;font-weight:800}
+@media print{.bar,.nav,.prog,.progtxt{display:none}.slide{display:block!important;page-break-after:always;box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">דלג לתוכן</a>
+<header class="bar">
+  <div class="ttl">שיעור 4 · הדילמה הגדולה (פרשת אוגנדה)<small>שבילי מורשת · ז'–ח' · ארץ ישראל: זיכרון, זהות ושייכות</small><em>ממעבדת הניסויים של מרי גרבי</em></div>
+  <a class="tool" href="../lesson-4.html" style="text-decoration:none">↩ לאתר</a>
+  <button class="tool" id="fsDn" title="הקטן טקסט" aria-label="הקטן טקסט">א−</button>
+  <button class="tool" id="fsUp" title="הגדל טקסט" aria-label="הגדל טקסט">א+</button>
+  <button class="tool" id="dys" aria-pressed="false" title="ריווח קריאה מוגבר">ריווח</button>
+  <button class="tool" id="hc" aria-pressed="false" title="ניגודיות גבוהה">ניגודיות</button>
+</header>
+<div class="wrap">
+  <div class="prog"><i></i></div>
+  <div class="progtxt" role="status" aria-live="polite"></div>
+  <main id="main">
+<section class="slide" data-label="פתיח" aria-label="פתיח"><div class="kicker">שיעור 4</div><h1>הדילמה הגדולה · פרשת אוגנדה</h1><p class='lead'>שיעור 4 מתוך 5 · שיא היחידה — הדילמה</p><div class="grid two">
+<div class="card a"><span class="tag">עמדה א' · העבר</span>
+<p><b>הארץ היא הבית שלנו בגלל ההיסטוריה.</b></p>
+<p>אלפי שנים של זיכרון, תפילה, סיפורים ומורשת מחברים אותנו למקום הזה.</p></div>
+<div class="card b"><span class="tag">עמדה ב' · ההווה</span>
+<p><b>הארץ היא הבית שלנו בגלל החיים כאן.</b></p>
+<p>המשפחה, החברים, השכונה, השפה והאחריות שלנו זה לזה — הם שהופכים אותה לבית.</p></div>
+</div></section>
+<section class="slide" data-label="מה נעשה היום" aria-label="מה נעשה היום"><div class="kicker">מפת השיעור</div><h1>מבנה שונה מהרגיל</h1><p class="lead">היום השיעור בנוי אחרת:</p><ul class="steps"><li><span class="n"><span>1</span></span><span>פתיחה — הכרת הסיפור ההיסטורי (10 דק')</span></li><li><span class="n"><span>2</span></span><span>דיבייט — שתי קבוצות, שתי עמדות (10 דק')</span></li><li><span class="n"><span>3</span></span><span>סיכום מורחב — מה זה אומר עלינו היום (25 דק')</span></li></ul><div class="glos"><b>דילמה = בחירה קשה בין שני דברים טובים</b><b>פוגרום = מתקפה אלימה על יהודים</b><b>קונגרס ציוני</b><b>"מקלט לילה"</b></div></section>
+<section class="slide" data-label="הרקע" aria-label="הרקע"><div class="kicker">שלב 1 · פתיחה (10 דק')</div><h1>מה קרה ב-1903?</h1><p class="lead">שנת <b>1903</b>. יהודי מזרח אירופה סובלים מפוגרומים — אלימות רצחנית, בתים נשרפים, אנשים נהרגים.</p>
+<p><b>בנימין זאב הרצל</b> מציע לקונגרס הציוני השישי הצעה מפתיעה: להקים התיישבות יהודית ב<b>אוגנדה</b> (מזרח אפריקה) — כ<mark>"מקלט לילה"</mark> זמני, עד שיהיה אפשר בארץ ישראל.</p>
+<div class="note"><b>שימו לב:</b> אוגנדה נמצאת כ-4,000 ק"מ מארץ ישראל — יבשת אחרת.</div></section>
+<section class="slide" data-label="שאלת הדילמה" aria-label="שאלת הדילמה"><div class="kicker">שלב 1 · השערה</div><h1>ההצבעה הראשונה</h1><p class="big">האם נסכים להקים מדינה יהודית <mark>מחוץ לארץ ישראל</mark> — כדי להציל יהודים מסכנת חיים?</p>
+<p>לפני שממשיכים: הרימו יד. <b>כן</b> / <b>לא</b> / <b>עוד לא החלטתי</b>. רשמו במחברת מה הצבעתם — נבדוק בסוף אם השתניתם.</p></section>
+<section class="slide" data-label="שתי העמדות" aria-label="שתי העמדות"><div class="kicker">שלב 2 · גוף השיעור (10 דק')</div><h1>מה אמרו בקונגרס?</h1><div class="grid two">
+<div class="card a"><span class="tag">עמדה א' · מתנגדי אוגנדה</span>
+<p><b>יחיאל צ'לנוב</b>, הקונגרס הציוני השישי:</p>
+<p>"במשך אלפיים שנה נשא העם היהודי בליבו את התקווה לחזור <mark>אך ורק לארץ אבותיו</mark>… אם נסכים לקחת ארץ אחרת, ולו באופן זמני, אנו מנתקים את השורשים ההיסטוריים והתרבותיים שלנו. <b>בלי ציון – אין ציונות</b>."</p></div>
+<div class="card b"><span class="tag">עמדה ב' · תומכי אוגנדה</span>
+<p><b>בנימין זאב הרצל</b>, אותו קונגרס:</p>
+<p>"<mark>אוגנדה אינה ציון</mark>, ואינה יכולה להיות ציון… ההצעה פירושה הקמת מקלט ארעי, 'מקלט לילה', עבור אותם אחים אומללים שאין להם כעת לאן לפנות, ושעומדים בפני <b>סכנה קיומית מיידית</b>."</p></div></div>
+<div class="note"><b>שימו לב:</b> גם הרצל עצמו אומר שאוגנדה אינה ציון. המחלוקת היא על <b>מה דחוף יותר</b>, לא על מה חשוב.</div></section>
+<section class="slide" data-label="דיבייט" aria-label="דיבייט"><div class="kicker">שלב 2 · פעילות</div><h1>קונגרס ציוני בכיתה</h1><p class="lead">מחלקים את הכיתה לשתי קבוצות. כל קבוצה מקבלת עמדה — <b>גם אם היא לא מסכימה איתה</b>.</p><ul class="steps"><li><span class="n"><span>1</span></span><span><b>3 דק' הכנה:</b> מוצאים 2 טיעונים מהטקסט + טיעון אחד משלכם.</span></li><li><span class="n"><span>2</span></span><span><b>2 דק' הצגה</b> לכל קבוצה — בלי הפרעות.</span></li><li><span class="n"><span>3</span></span><span><b>2 דק' תגובה:</b> כל קבוצה עונה לטיעון אחד של השנייה.</span></li><li><span class="n"><span>4</span></span><span><b>הצבעה חופשית</b> — עכשיו כל אחד לפי מה שהוא באמת חושב.</span></li></ul><div class="timer" data-timer="10"><strong>דיבייט:</strong><output aria-live="off">00:00</output><button class="tool tstart">▶ התחל</button><button class="tool treset">↺ אפס</button></div><details class="mod"><summary>➕ מודול אופציונלי · ג'יקסו במקום דיבייט</summary><p>4 תחנות: (1) הרקע ההיסטורי, (2) נאום צ'לנוב, (3) נאום הרצל, (4) מה קרה בפועל. כל תלמיד מומחה לתחנה אחת ומלמד את קבוצת הבית. מתאים לכיתות שבהן דיבייט מול כולם מלחיץ.</p></details></section>
+<section class="slide" data-label="מה קרה בפועל" aria-label="מה קרה בפועל"><div class="kicker">שלב 3 · סיכום (25 דק')</div><h1>ההכרעה</h1><p class="lead">ההצעה <b>נדחתה בסופו של דבר</b>. הקונגרס בחר להמשיך להתמקד בארץ ישראל.</p>
+<p>הוויכוח היה סוער — היו צירים שיצאו מהאולם בבכי. שנתיים אחר כך, בקונגרס השביעי (1905), התוכנית ירדה מהפרק סופית.</p>
+<div class="note"><b>שאלה:</b> מה זה אומר שהעם בחר את הזיכרון על פני הפתרון המהיר? מה זה עלה, ומה זה נתן?</div></section>
+<section class="slide" data-label="החיבור להיום" aria-label="החיבור להיום"><div class="kicker">שלב 3 · דיון</div><h1>מ-1903 לעכשיו</h1><p class="big">האם ישראל היום היא <b>"מקלט"</b> או <b>"מהות"</b>?</p>
+<div class="grid two">
+<div class="card b"><b>מקלט</b><p>מקום בטוח לחיות בו. מדינה שמגנה על אזרחיה.</p></div>
+<div class="card a"><b>מהות</b><p>מקום שהוא חלק מהזהות שלנו. לא מחליפים אותו באחר.</p></div></div>
+<p><b>ואולי — שניהם?</b> מה ההבדל בין 1903 להיום?</p></section>
+<section class="slide" data-label="כרטיס יציאה" aria-label="כרטיס יציאה"><div class="kicker">כרטיס יציאה</div><h1>הטיעון שלי</h1><p class="lead">ניסוח טיעון אישי בכתב — 5 שורות:</p>
+<div class="source"><span class="chunk">אם הייתי ציר בקונגרס ב-1903, הייתי מצביע/ה ______ .</span>
+<span class="chunk">הסיבה הראשונה שלי היא ______ .</span>
+<span class="chunk">אני מבין/ה גם את הצד השני, כי ______ .</span>
+<span class="chunk">היום, בשבילי, ישראל היא ______ .</span></div><div class="timer" data-timer="8"><strong>כתיבה:</strong><output aria-live="off">00:00</output><button class="tool tstart">▶ התחל</button><button class="tool treset">↺ אפס</button></div></section>
+
+  </main>
+  <p class="credit">🧪 <b>ממעבדת הניסויים של מרי גרבי</b></p>
+</div>
+<nav class="nav" aria-label="ניווט בין שקופיות">
+  <button id="prev">→ הקודם</button>
+  <span class="idx" id="idx"></span>
+  <button id="next" class="pri">הבא ←</button>
+</nav>
+<script>
+const S=[...document.querySelectorAll('.slide')];let i=0;
+const bar=document.querySelector('.prog i'),ptxt=document.querySelector('.progtxt'),
+ idx=document.getElementById('idx'),pv=document.getElementById('prev'),nx=document.getElementById('next');
+function show(n){i=Math.max(0,Math.min(S.length-1,n));
+ S.forEach((s,k)=>{s.hidden=k!==i;});
+ bar.style.width=((i+1)/S.length*100)+'%';
+ ptxt.textContent='שקופית '+(i+1)+' מתוך '+S.length+' · '+(S[i].dataset.label||'');
+ idx.textContent=(i+1)+'/'+S.length; pv.disabled=i===0; nx.disabled=i===S.length-1;
+ window.scrollTo({top:0,behavior:'instant'});
+ S[i].setAttribute('tabindex','-1'); S[i].focus({preventScroll:true});
+ try{localStorage&&0}catch(e){}
+}
+pv.onclick=()=>show(i-1); nx.onclick=()=>show(i+1);
+document.addEventListener('keydown',e=>{
+ if(e.target.matches('input,textarea'))return;
+ if(e.key==='ArrowLeft'||e.key==='PageDown'||e.key===' ')show(i+1);
+ if(e.key==='ArrowRight'||e.key==='PageUp')show(i-1);
+});
+// swipe (touch) — לחיצה תמיד זמינה כחלופה
+let x0=null;
+document.addEventListener('touchstart',e=>{x0=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{if(x0===null)return;const d=e.changedTouches[0].clientX-x0;
+ if(Math.abs(d)>70){d<0?show(i-1):show(i+1)} x0=null},{passive:true});
+
+// tools
+let fs=1;
+function setFs(v){fs=Math.min(1.7,Math.max(.85,v));document.documentElement.style.setProperty('--fs',fs.toFixed(2));}
+document.getElementById('fsUp').onclick=()=>setFs(fs+.12);
+document.getElementById('fsDn').onclick=()=>setFs(fs-.12);
+const t=(id,cls)=>{const b=document.getElementById(id);b.onclick=()=>{const on=document.body.classList.toggle(cls);b.setAttribute('aria-pressed',on)}};
+t('hc','hc'); t('dys','dys');
+// checklists
+document.querySelectorAll('.steps li').forEach(li=>{
+ li.tabIndex=0;li.setAttribute('role','checkbox');li.setAttribute('aria-checked','false');
+ const tog=()=>{const on=li.classList.toggle('done');li.setAttribute('aria-checked',on)};
+ li.onclick=tog; li.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}};
+});
+// timers
+document.querySelectorAll('[data-timer]').forEach(box=>{
+ const out=box.querySelector('output'),btn=box.querySelector('.tstart'),rst=box.querySelector('.treset');
+ let total=+box.dataset.timer*60,left=total,h=null;
+ const paint=()=>out.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');
+ paint();
+ btn.onclick=()=>{if(h){clearInterval(h);h=null;btn.textContent='▶ המשך';return}
+  btn.textContent='⏸ עצור';h=setInterval(()=>{left--;paint();if(left<=0){clearInterval(h);h=null;btn.textContent='▶ התחל';out.textContent='נגמר הזמן';}},1000)};
+ rst.onclick=()=>{clearInterval(h);h=null;left=total;paint();btn.textContent='▶ התחל'};
+});
+show(0);
+</script>
+</body></html>
