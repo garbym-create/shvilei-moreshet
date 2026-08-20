@@ -3,7 +3,8 @@
 import os, subprocess, html as H
 
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); U=os.path.join(ROOT,"units/eretz-israel")
-CREDIT="ממעבדת הניסויים של מרי גרבי"
+CREDIT="ממעבדת הניסויים של מרי גרבי"   # מופיע במקום אחד בלבד בכל דף — בפוטר
+TAGLINE="יחידות לימוד מונגשות"
 UNIT="ארץ ישראל: זיכרון, זהות ושייכות"
 
 LESSONS=[
@@ -63,7 +64,7 @@ def shell(title, body, depth=0, nav="", desc=""):
 <body>
 <a class="skip" href="#main">דלג לתוכן</a>
 <header class="site"><div class="wrap">
-<a class="logo" href="{b}index.html">שבילי מורשת<small>{CREDIT}</small></a>
+<a class="logo" href="{b}index.html">שבילי מורשת<small>{TAGLINE}</small></a>
 <nav aria-label="ניווט ראשי">{items}</nav>
 </div></header>
 <main id="main">{body}</main>
