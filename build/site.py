@@ -155,7 +155,7 @@ for n,t,sub,goal,stages,srcs in LESSONS:
 <div class="wrap">
 <div class="btns">
 <a class="btn pri" href="decks/lesson-{n}.html">▶ פתיחת המצגת</a>
-<a class="btn" href="plans/original-plan-{n}.pdf">📄 מערך השיעור המקורי</a>
+<a class="btn" href="{MEYDA}/{MEYDA_FILE.format(n=n)}" target="_blank" rel="noopener">📄 מערך השיעור המקורי באתר משרד החינוך ↗</a>
 </div>
 <h2>מטרת השיעור</h2><p>{goal}</p>
 <h2>מבנה השיעור</h2><ol class="stages">{st}</ol>
@@ -199,8 +199,8 @@ open(os.path.join(U,"appendix.html"),"w",encoding="utf-8").write(
     shell("נספח מערכי השיעור המלאים",appendix,2,"teacher"))
 
 # ── דף מקורות ────────────────────────────────────────────
-plans="".join(f'<li><a href="plans/original-plan-{n}.pdf">מערך שיעור {n} — {t}</a>'
-              f'<a href="{MEYDA}/{MEYDA_FILE.format(n=n)}">המקור באתר משרד החינוך</a></li>'
+plans="".join(f'<li><a href="{MEYDA}/{MEYDA_FILE.format(n=n)}" target="_blank" rel="noopener">'
+              f'מערך שיעור {n} — {t} ↗</a></li>'
               for n,t,_,_,_,_ in LESSONS)
 sources=f"""<section class="hero"><div class="wrap">
 <span class="eyebrow">מקורות</span><h1>החומרים שהערכה מבוססת עליהם</h1>
@@ -208,7 +208,7 @@ sources=f"""<section class="hero"><div class="wrap">
 </div></section>
 <div class="wrap">
 <h2>מערכי השיעור המקוריים</h2>
-<p>המערכים הם חלק מ<b>"שבילי מורשת"</b> של המזכירות הפדגוגית במשרד החינוך. לצד כל מערך מופיע קישור לקובץ באתר משרד החינוך — שם תמיד תמצאו את הגרסה העדכנית ביותר.</p>
+<p>המערכים הם חלק מ<b>"שבילי מורשת"</b> של המזכירות הפדגוגית במשרד החינוך. הקישורים מובילים ישירות לקבצים באתר משרד החינוך, כך שתמיד תגיעו לגרסה העדכנית — ואין באתר הזה עותקים שמתיישנים.</p>
 <ul class="files">{plans}</ul>
 <h2>מה לא נכלל בערכה, ולמה</h2>
 <table><tr><th>פריט</th><th>סיבה</th><th>מה לעשות</th></tr>
