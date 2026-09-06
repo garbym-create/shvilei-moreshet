@@ -6,6 +6,9 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); U=os.path.join
 CREDIT="ממעבדת הניסויים של מרי גרבי"   # מופיע במקום אחד בלבד בכל דף — בפוטר
 TAGLINE="יחידות לימוד מונגשות"
 UNIT="ארץ ישראל: זיכרון, זהות ושייכות"
+# המקור הרשמי של המערכים — "שבילי מורשת", המזכירות הפדגוגית, משרד החינוך
+MEYDA="https://meyda.education.gov.il/files/Mazkirut_Pedagogit/shviley_moreshet/hativatbeynayim/1"
+MEYDA_FILE="shiur{n}-eretzisraelzikaronzehutveshayakhut.pdf"
 
 LESSONS=[
  (1,"מהו בית ומהו זיכרון?","\"נחיתה\" לתוך הדילמה מתוך החוויה האישית",
@@ -196,14 +199,16 @@ open(os.path.join(U,"appendix.html"),"w",encoding="utf-8").write(
     shell("נספח מערכי השיעור המלאים",appendix,2,"teacher"))
 
 # ── דף מקורות ────────────────────────────────────────────
-plans="".join(f'<li><a href="plans/original-plan-{n}.pdf">מערך שיעור {n} — {t}</a></li>'
+plans="".join(f'<li><a href="plans/original-plan-{n}.pdf">מערך שיעור {n} — {t}</a>'
+              f' · <a href="{MEYDA}/{MEYDA_FILE.format(n=n)}">המקור באתר משרד החינוך</a></li>'
               for n,t,_,_,_,_ in LESSONS)
 sources=f"""<section class="hero"><div class="wrap">
 <span class="eyebrow">מקורות</span><h1>החומרים שהערכה מבוססת עליהם</h1>
-<p class="sub">מערכי השיעור המקוריים של היחידה, כפי שהתקבלו — לצד הערת זכויות על חומרים שלא נכללו.</p>
+<p class="sub">מערכי השיעור המקוריים של היחידה — לצד הערת זכויות על חומרים שלא נכללו.</p>
 </div></section>
 <div class="wrap">
 <h2>מערכי השיעור המקוריים</h2>
+<p>המערכים הם חלק מ<b>"שבילי מורשת"</b> של המזכירות הפדגוגית במשרד החינוך. לצד כל מערך מופיע קישור לקובץ באתר משרד החינוך — שם תמיד תמצאו את הגרסה העדכנית ביותר.</p>
 <ul class="files">{plans}</ul>
 <h2>מה לא נכלל בערכה, ולמה</h2>
 <table><tr><th>פריט</th><th>סיבה</th><th>מה לעשות</th></tr>
