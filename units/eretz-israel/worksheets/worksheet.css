@@ -41,13 +41,15 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
 /* ── עמוד ── */
 /* --sec = הרווח בין חלק לחלק: שתי שורות טקסט (2 × 1.5 × גודל הגופן). */
 .sheet{--sec:3em;
-  width:210mm;min-height:297mm;margin:22px auto;padding:13mm 14mm 10mm;
+  width:210mm;min-height:297mm;margin:22px auto;padding:11mm 13mm 8mm;
   background:var(--paper);
   box-shadow:0 2px 6px rgba(27,36,48,.10),0 18px 46px -30px rgba(27,36,48,.55);
   display:flex;flex-direction:column;gap:3mm}
 /* הכותרת, שורת הפרטים והמטרה נשארות צמודות — הן גוש זיהוי אחד.
    שתי השורות נפתחות רק לפני כל חלק תוכן. */
 .sheet > .task{margin-top:calc(var(--sec) - 3mm)}
+/* עמוד עמוס: הרווח בין החלקים מתקצר מעט כדי לשמור על שני עמודים לשיעור. */
+.sheet.dense{--sec:2.1em}
 
 /* ── כותרת ── */
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
@@ -82,9 +84,9 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
 
 /* ── שורות כתיבה ── */
 .lines{display:flex;flex-direction:column}
-.lines i{display:block;height:9mm;border-bottom:1.5px dotted var(--rule)}
+.lines i{display:block;height:8mm;border-bottom:1.5px dotted var(--rule)}
 .lines i:first-child{border-top:1.5px dotted var(--rule)}
-.lines.tight i{height:7.5mm}
+.lines.tight i{height:7mm}
 
 /* ── שורת השלמה ── */
 .fillrow{font-size:.9rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px}
@@ -105,7 +107,7 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
 .col.b .ch{background:var(--b)}
 .col.n .ch{background:var(--ink)}
 .col .slots{padding:3px 12px 7px}
-.col .slots i{display:block;height:8.5mm;border-bottom:1.5px dotted var(--rule)}
+.col .slots i{display:block;height:8mm;border-bottom:1.5px dotted var(--rule)}
 .col .slots i:last-child{border-bottom:none}
 
 /* ── טבלה למילוי ── */
@@ -117,7 +119,7 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
 .grid thead th{background:var(--tint);font-weight:700;font-size:.79rem;color:var(--muted)}
 .grid tbody tr:last-child td{border-bottom:none}
 .grid td.lbl{font-weight:700;white-space:nowrap;background:var(--tint);width:1%}
-.grid td.blank{height:13mm}
+.grid td.blank{height:12mm}
 
 /* ── רב-ברירה ── */
 .choice{display:flex;flex-direction:column;gap:6px}
