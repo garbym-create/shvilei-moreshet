@@ -108,8 +108,7 @@ home=f"""<section class="hero"><div class="wrap">
 {POS}
 <h2>השיעורים</h2>
 {lesson_cards(0)}
-<div class="note"><b>למורה:</b> ב<a href="units/eretz-israel/teacher.html">אזור המורה</a> תמצאו את מדריך ההתאמות,
-נספח מערכי השיעור המלאים, ומפתח שלושת השבילים.</div>
+<div class="note"><b>למורה:</b> ב<a href="units/eretz-israel/teacher.html">אזור המורה</a> תמצאו את מדריך ההתאמות ומפתח שלושת השבילים.</div>
 </div>"""
 open(os.path.join(ROOT,"index.html"),"w",encoding="utf-8").write(
     shell(f"{UNIT} · שבילי מורשת",home,0,"home",
@@ -178,8 +177,7 @@ def md2html(path):
                           text=True,cwd=ROOT).stdout
 
 teacher_md=os.path.join(U,"teacher-guide.md")
-appendix_md=os.path.join(U,"appendix.md")
-t_html=md2html(teacher_md); a_html=md2html(appendix_md)
+t_html=md2html(teacher_md)
 
 teacher=f"""<section class="hero"><div class="wrap">
 <span class="eyebrow">אזור המורה</span><h1>מדריך ההתאמות וההנגשה</h1>
@@ -189,12 +187,6 @@ teacher=f"""<section class="hero"><div class="wrap">
 {t_html}</div>"""
 open(os.path.join(U,"teacher.html"),"w",encoding="utf-8").write(
     shell("אזור המורה · מדריך התאמות",teacher,2,"teacher"))
-
-appendix=f"""<div class="wrap" style="padding-top:30px">
-<div class="btns"><a class="btn" href="teacher.html">→ חזרה למדריך ההתאמות</a></div>
-{a_html}</div>"""
-open(os.path.join(U,"appendix.html"),"w",encoding="utf-8").write(
-    shell("נספח מערכי השיעור המלאים",appendix,2,"teacher"))
 
 # ── דף מקורות ────────────────────────────────────────────
 plans="".join(f'<li><a href="{MEYDA}/{MEYDA_FILE.format(n=n)}" target="_blank" rel="noopener">'

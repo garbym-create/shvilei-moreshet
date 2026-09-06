@@ -15,7 +15,6 @@ units/eretz-israel/
   index.html                  עמוד היחידה
   lesson-1..5.html            עמוד לכל שיעור
   teacher.html                מדריך ההתאמות (מומר מ-Markdown)
-  appendix.html               נספח מערכי השיעור המלאים (מומר מ-Markdown)
   sources.html                המערכים המקוריים והערות זכויות
   decks/lesson-1..5.html      המצגות להקרנה. עצמאיות לגמרי — CSS ו-JS מוטמעים.
   worksheets/*.html           דפי העבודה — קובץ לכל "שביל", 10 עמודים. הדפסה מהדפדפן.
@@ -25,7 +24,7 @@ units/eretz-israel/
 
 ## כללי עבודה
 
-**אל תערוך ידנית** את `index.html`, `units/*/index.html`, `lesson-*.html`, `teacher.html`, `appendix.html`, `sources.html` — כולם נוצרים מחדש על ידי `build/site.py` וכל עריכה ידנית תימחק. ערוך את הסקריפט והרץ `python3 build/site.py`.
+**אל תערוך ידנית** את `index.html`, `units/*/index.html`, `lesson-*.html`, `teacher.html`, `sources.html` — כולם נוצרים מחדש על ידי `build/site.py` וכל עריכה ידנית תימחק. ערוך את הסקריפט והרץ `python3 build/site.py`.
 
 **המצגות** ב־`decks/` הן היוצא מן הכלל: הן נבנות בנפרד ואפשר לערוך אותן ישירות. כל מצגת היא קובץ עצמאי אחד.
 
