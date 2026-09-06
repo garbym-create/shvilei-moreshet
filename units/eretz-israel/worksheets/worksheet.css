@@ -49,7 +49,7 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
    שתי השורות נפתחות רק לפני כל חלק תוכן. */
 .sheet > .task{margin-top:calc(var(--sec) - 3mm)}
 /* עמוד עמוס: הרווח בין החלקים מתקצר מעט כדי לשמור על שני עמודים לשיעור. */
-.sheet.dense{--sec:2.1em}
+.sheet.dense{--sec:1.7em}
 
 /* ── כותרת ── */
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
