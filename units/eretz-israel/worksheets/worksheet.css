@@ -17,10 +17,12 @@
   --trail-bg:#EAF3E9;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* טקסט רץ = 14 נק' (.9rem), רווח שורה וחצי.
+   כל שאר הגדלים נגזרים מכאן ביחס קבוע — שינוי כאן משנה את כל הדפים. */
+html{scroll-behavior:smooth;font-size:15.56pt}
 body{margin:0;background:#E9EDF0;color:var(--ink);
   font-family:"Assistant","Segoe UI",system-ui,sans-serif;
-  font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  font-size:.9rem;line-height:1.5;-webkit-font-smoothing:antialiased}
 
 /* ── סרגל עליון (מסך בלבד) ── */
 .bar{position:sticky;top:0;z-index:9;background:var(--paper);
@@ -68,7 +70,7 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
 .thead h2{margin:0;font-size:1.05rem;font-weight:800;flex:1}
 .time{flex:none;font-size:.73rem;font-weight:700;color:var(--muted);
   border:1.5px solid var(--hair);border-radius:999px;padding:3px 10px;background:var(--tint)}
-.hint{font-size:.87rem;color:var(--muted);margin:0}
+.hint{font-size:.9rem;color:var(--muted);margin:0}
 .hint b{color:var(--ink)}
 .q{font-size:.9rem;margin:0}
 .q b{font-weight:700}
