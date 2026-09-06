@@ -200,7 +200,7 @@ open(os.path.join(U,"appendix.html"),"w",encoding="utf-8").write(
 
 # ── דף מקורות ────────────────────────────────────────────
 plans="".join(f'<li><a href="plans/original-plan-{n}.pdf">מערך שיעור {n} — {t}</a>'
-              f' · <a href="{MEYDA}/{MEYDA_FILE.format(n=n)}">המקור באתר משרד החינוך</a></li>'
+              f'<a href="{MEYDA}/{MEYDA_FILE.format(n=n)}">המקור באתר משרד החינוך</a></li>'
               for n,t,_,_,_,_ in LESSONS)
 sources=f"""<section class="hero"><div class="wrap">
 <span class="eyebrow">מקורות</span><h1>החומרים שהערכה מבוססת עליהם</h1>
