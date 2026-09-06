@@ -1,0 +1,179 @@
+/* דפי העבודה — עיצוב משותף לשלושת השבילים.
+   כל .sheet הוא עמוד A4 אחד. Ctrl+P מייצר PDF מלא. */
+
+:root{
+  --ink:#1B2430;
+  --muted:#5C6A78;
+  --faint:#93A1AE;
+  --rule:#C4D0DB;
+  --hair:#E4EBF1;
+  --paper:#FFFFFF;
+  --tint:#F5F8FA;
+  --a:#1F5FA8;        /* עמדה א' · העבר */
+  --a-bg:#E8F0FA;
+  --b:#C2670F;        /* עמדה ב' · ההווה */
+  --b-bg:#FBF0E3;
+  --trail:#3F7A3A;    /* נדרס בכל קובץ שביל */
+  --trail-bg:#EAF3E9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#E9EDF0;color:var(--ink);
+  font-family:"Assistant","Segoe UI",system-ui,sans-serif;
+  font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* ── סרגל עליון (מסך בלבד) ── */
+.bar{position:sticky;top:0;z-index:9;background:var(--paper);
+  border-bottom:1px solid var(--hair);padding:10px 16px;
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  box-shadow:0 1px 3px rgba(27,36,48,.06)}
+.bar .t{font-weight:800;display:flex;align-items:center;gap:8px;margin-inline-end:auto}
+.bar .t .dot{width:11px;height:11px;border-radius:50%;background:var(--trail);flex:none}
+.bar a,.bar button{font:inherit;font-size:.85rem;font-weight:700;color:var(--ink);
+  text-decoration:none;background:var(--tint);border:1.5px solid var(--hair);
+  border-radius:8px;padding:0 12px;min-height:38px;display:inline-flex;align-items:center;
+  cursor:pointer}
+.bar a:hover,.bar button:hover{border-color:var(--trail)}
+.bar a:focus-visible,.bar button:focus-visible{outline:2px solid var(--trail);outline-offset:2px}
+
+/* ── עמוד ── */
+.sheet{width:210mm;min-height:297mm;margin:22px auto;padding:13mm 14mm 10mm;
+  background:var(--paper);
+  box-shadow:0 2px 6px rgba(27,36,48,.10),0 18px 46px -30px rgba(27,36,48,.55);
+  display:flex;flex-direction:column;gap:6mm}
+
+/* ── כותרת ── */
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+  padding-bottom:8px;border-bottom:2.5px solid var(--ink)}
+.top .unit{font-size:.7rem;color:var(--muted)}
+.top h1{margin:2px 0 0;font-size:1.42rem;font-weight:800;line-height:1.15}
+.top .lesson{font-size:.78rem;font-weight:700;color:var(--muted);margin-top:2px}
+.trailmark{flex:none;display:flex;align-items:center;gap:7px;
+  border:1.5px solid var(--trail);border-radius:7px;padding:7px 12px;background:var(--trail-bg)}
+.trailmark .dot{width:12px;height:12px;border-radius:50%;background:var(--trail);flex:none}
+.trailmark .nm{font-size:.76rem;font-weight:700;color:var(--trail);white-space:nowrap}
+
+.who{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.who label{display:flex;align-items:baseline;gap:7px;flex:1 1 auto}
+.who .fill{flex:1;border-bottom:1.5px dotted var(--rule);min-width:70px;height:1.15em}
+
+.goal{background:var(--tint);border-inline-start:4px solid var(--ink);
+  padding:9px 14px;border-radius:0 5px 5px 0;font-size:.9rem}
+
+/* ── משימה ── */
+.task{display:flex;flex-direction:column;gap:7px;break-inside:avoid}
+.thead{display:flex;align-items:center;gap:10px}
+.tnum{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
+  font-weight:700;font-size:.88rem;display:flex;align-items:center;justify-content:center}
+.thead h2{margin:0;font-size:1.05rem;font-weight:800;flex:1}
+.time{flex:none;font-size:.73rem;font-weight:700;color:var(--muted);
+  border:1.5px solid var(--hair);border-radius:999px;padding:3px 10px;background:var(--tint)}
+.hint{font-size:.87rem;color:var(--muted);margin:0}
+.hint b{color:var(--ink)}
+.q{font-size:.9rem;margin:0}
+.q b{font-weight:700}
+
+/* ── שורות כתיבה ── */
+.lines{display:flex;flex-direction:column}
+.lines i{display:block;height:9mm;border-bottom:1.5px dotted var(--rule)}
+.lines i:first-child{border-top:1.5px dotted var(--rule)}
+.lines.tight i{height:7.5mm}
+
+/* ── שורת השלמה ── */
+.fillrow{font-size:.9rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px}
+.fillrow .gap{flex:1;min-width:90px;border-bottom:1.5px dotted var(--rule);height:1.2em}
+
+/* ── בנק מילים ── */
+.bank{border:1.5px dashed var(--rule);border-radius:7px;padding:9px 12px;
+  display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:var(--tint)}
+.bank .lbl{font-size:.78rem;font-weight:700;color:var(--muted);margin-inline-end:4px}
+.bank span.w{font-size:.86rem;font-weight:600;background:var(--paper);
+  border:1.5px solid var(--hair);border-radius:999px;padding:3px 11px}
+
+/* ── שתי עמדות ── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.col{border:1.5px solid var(--hair);border-radius:7px;overflow:hidden;display:flex;flex-direction:column}
+.col .ch{padding:7px 12px;font-size:.83rem;font-weight:700;color:#fff}
+.col.a .ch{background:var(--a)}
+.col.b .ch{background:var(--b)}
+.col.n .ch{background:var(--ink)}
+.col .slots{padding:3px 12px 7px}
+.col .slots i{display:block;height:8.5mm;border-bottom:1.5px dotted var(--rule)}
+.col .slots i:last-child{border-bottom:none}
+
+/* ── טבלה למילוי ── */
+.grid{border:1.5px solid var(--hair);border-radius:7px;overflow:hidden}
+.grid table{border-collapse:collapse;width:100%;font-size:.87rem}
+.grid th,.grid td{text-align:start;padding:8px 11px;border-bottom:1.5px solid var(--hair);
+  border-inline-start:1.5px solid var(--hair);vertical-align:top}
+.grid th:first-child,.grid td:first-child{border-inline-start:none}
+.grid thead th{background:var(--tint);font-weight:700;font-size:.79rem;color:var(--muted)}
+.grid tbody tr:last-child td{border-bottom:none}
+.grid td.lbl{font-weight:700;white-space:nowrap;background:var(--tint);width:1%}
+.grid td.blank{height:13mm}
+
+/* ── רב-ברירה ── */
+.choice{display:flex;flex-direction:column;gap:6px}
+.choice label{display:flex;align-items:flex-start;gap:9px;font-size:.89rem;
+  border:1.5px solid var(--hair);border-radius:7px;padding:8px 11px}
+.choice .box{flex:none;width:15px;height:15px;border:2px solid var(--rule);
+  border-radius:4px;margin-top:2px}
+
+/* ── רשימת ציוד ── */
+.check{display:flex;flex-wrap:wrap;gap:8px}
+.check span{display:flex;align-items:center;gap:8px;font-size:.86rem;
+  border:1.5px solid var(--hair);border-radius:7px;padding:7px 11px;background:var(--tint)}
+.check .box{width:14px;height:14px;border:2px solid var(--rule);border-radius:3px;flex:none}
+
+/* ── מקור ── */
+.source{border-inline-start:4px solid var(--ink);background:var(--tint);
+  padding:9px 13px;border-radius:0 6px 6px 0;display:flex;flex-direction:column;gap:4px}
+.source .txt{font-size:.9rem;line-height:1.6}
+.source .cite{font-size:.76rem;color:var(--muted);font-weight:700}
+.source .plain{font-size:.84rem;color:var(--muted)}
+.source.a{border-inline-start-color:var(--a);background:var(--a-bg)}
+.source.b{border-inline-start-color:var(--b);background:var(--b-bg)}
+
+/* ── סקאלה ── */
+.scale{display:flex;flex-direction:column;gap:5px}
+.bar-line{position:relative;height:12px;border-radius:999px;
+  background:linear-gradient(90deg,var(--b-bg),#EDF1F5,var(--a-bg));
+  border:1.5px solid var(--hair)}
+.bar-line em{position:absolute;top:-5px;width:2px;height:22px;background:var(--rule)}
+.bar-line em:nth-child(1){right:0}
+.bar-line em:nth-child(2){right:50%}
+.bar-line em:nth-child(3){left:0}
+.ends{display:flex;justify-content:space-between;font-size:.79rem;font-weight:700}
+.ends .ea{color:var(--a)}
+.ends .eb{color:var(--b)}
+
+/* ── עצה / הרחבה / חלופות ── */
+.tip,.ext{display:flex;gap:9px;align-items:flex-start;font-size:.84rem;
+  border-radius:7px;padding:8px 12px}
+.tip{color:var(--muted);background:var(--trail-bg)}
+.ext{color:var(--muted);background:var(--tint);border:1.5px dashed var(--rule)}
+.tip .ic,.ext .ic{flex:none}
+.tip b,.ext b{color:var(--ink)}
+
+/* ── תחתית ── */
+.foot{margin-top:auto;padding-top:7px;border-top:1.5px solid var(--hair);
+  display:flex;justify-content:space-between;font-size:.71rem;color:var(--faint)}
+.foot .pg{font-variant-numeric:tabular-nums}
+
+/* ── הדפסה ── */
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .sheet{margin:0;box-shadow:none;width:auto;min-height:auto;
+    padding:11mm 13mm;break-after:page}
+  .sheet:last-of-type{break-after:auto}
+}
+
+/* ── מסכים צרים ── */
+@media (max-width:820px){
+  .sheet{width:auto;min-height:auto;margin:12px;padding:18px}
+  .two{grid-template-columns:1fr}
+  .grid table{font-size:.83rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

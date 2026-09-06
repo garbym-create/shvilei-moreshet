@@ -129,12 +129,12 @@ unit=f"""<section class="hero"><div class="wrap">
 <h2>השיעורים</h2>
 {lesson_cards(2)}
 <h2>דפי העבודה — שלושת השבילים</h2>
-<p>אותם מקורות ואותן שאלות מנחות בשלוש גרסאות. דף דו-צדדי אחד לכל שיעור.
+<p>אותם מקורות ואותן שאלות מנחות בשלוש גרסאות. שני עמודים לכל שיעור, להדפסה דו-צדדית.
 <b>על הדף לא מופיעה רמת קושי</b> — רק שם השביל.</p>
 <div class="btns">
-<a class="btn rimon" href="files/worksheet-rimon.pdf">⬇ שביל הרימון</a>
-<a class="btn zayit" href="files/worksheet-zayit.pdf">⬇ שביל הזית</a>
-<a class="btn teena" href="files/worksheet-teena.pdf">⬇ שביל התאנה</a>
+<a class="btn rimon" href="worksheets/rimon.html">שביל הרימון</a>
+<a class="btn zayit" href="worksheets/zayit.html">שביל הזית</a>
+<a class="btn teena" href="worksheets/teena.html">שביל התאנה</a>
 </div>
 <div class="note"><b>המפתח מי מקבל מה</b> נמצא באזור המורה בלבד — לא על הדף ולא בכיתה.</div>
 </div>"""
@@ -161,11 +161,11 @@ for n,t,sub,goal,stages,srcs in LESSONS:
 <h2>מבנה השיעור</h2><ol class="stages">{st}</ol>
 <h2>מקורות ומשאבי הלימוד</h2><ul>{sl}</ul>
 <h2>דפי עבודה לשיעור</h2>
-<p>הקובץ של כל שביל מכיל את חמשת השיעורים. שיעור {n} נמצא בעמודים {2*n-1}–{2*n}.</p>
+<p>דף העבודה נפתח בשיעור {n}. אפשר להדפיס עמוד בודד או את כל השביל.</p>
 <div class="btns">
-<a class="btn rimon" href="files/worksheet-rimon.pdf#page={2*n-1}">⬇ שביל הרימון</a>
-<a class="btn zayit" href="files/worksheet-zayit.pdf#page={2*n-1}">⬇ שביל הזית</a>
-<a class="btn teena" href="files/worksheet-teena.pdf#page={2*n-1}">⬇ שביל התאנה</a>
+<a class="btn rimon" href="worksheets/rimon.html#l{n}">שביל הרימון</a>
+<a class="btn zayit" href="worksheets/zayit.html#l{n}">שביל הזית</a>
+<a class="btn teena" href="worksheets/teena.html#l{n}">שביל התאנה</a>
 </div>
 <div class="btns" style="margin-top:30px">{prev}{nxt}</div>
 </div>"""
