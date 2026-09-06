@@ -186,8 +186,6 @@ teacher=f"""<section class="hero"><div class="wrap">
 <p class="sub">איך מנהלים את היחידה בכיתה שבה יש דיסלקציה, קשיי קשב, קשיי כתיבה וקשיים בתפקודים ניהוליים.</p>
 </div></section>
 <div class="wrap">
-<div class="btns"><a class="btn pri" href="appendix.html">📘 נספח מערכי השיעור המלאים</a>
-<a class="btn" href="sources.html">📄 המערכים המקוריים</a></div>
 {t_html}</div>"""
 open(os.path.join(U,"teacher.html"),"w",encoding="utf-8").write(
     shell("אזור המורה · מדריך התאמות",teacher,2,"teacher"))
