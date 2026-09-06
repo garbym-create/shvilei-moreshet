@@ -39,10 +39,15 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
 .bar a:focus-visible,.bar button:focus-visible{outline:2px solid var(--trail);outline-offset:2px}
 
 /* ── עמוד ── */
-.sheet{width:210mm;min-height:297mm;margin:22px auto;padding:13mm 14mm 10mm;
+/* --sec = הרווח בין חלק לחלק: שתי שורות טקסט (2 × 1.5 × גודל הגופן). */
+.sheet{--sec:3em;
+  width:210mm;min-height:297mm;margin:22px auto;padding:13mm 14mm 10mm;
   background:var(--paper);
   box-shadow:0 2px 6px rgba(27,36,48,.10),0 18px 46px -30px rgba(27,36,48,.55);
-  display:flex;flex-direction:column;gap:6mm}
+  display:flex;flex-direction:column;gap:3mm}
+/* הכותרת, שורת הפרטים והמטרה נשארות צמודות — הן גוש זיהוי אחד.
+   שתי השורות נפתחות רק לפני כל חלק תוכן. */
+.sheet > .task{margin-top:calc(var(--sec) - 3mm)}
 
 /* ── כותרת ── */
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
@@ -63,7 +68,7 @@ body{margin:0;background:#E9EDF0;color:var(--ink);
   padding:9px 14px;border-radius:0 5px 5px 0;font-size:.9rem}
 
 /* ── משימה ── */
-.task{display:flex;flex-direction:column;gap:7px;break-inside:avoid}
+.task{display:flex;flex-direction:column;gap:.55em;break-inside:avoid}
 .thead{display:flex;align-items:center;gap:10px}
 .tnum{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
   font-weight:700;font-size:.88rem;display:flex;align-items:center;justify-content:center}
